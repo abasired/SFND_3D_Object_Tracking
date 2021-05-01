@@ -36,8 +36,7 @@ In this final project, you will implement the missing parts in the schematic. To
 ## Writeup
 
 * The various steps followed are as follows: 
-  * FP.1: matchBoundingBoxes fuction was implemented to obtain the respective Bounding boxes for distance ratio computation in subsequent frames.
-   	This was implemented by counting keypoint matches in with every Bounding box and picked the one with max number of matches. Later various detector and descriptor pairs are compared to analyse respective performances.
+  * FP.1: matchBoundingBoxes function was implemented to obtain the respective Bounding boxes in subsequent image frames. These Bounding boxes are outcomes of Yolo based deeplearning neural network. This was implemented by counting keypoint matches in every Bounding box and picked the one with max number of matches. 
   ```
   void matchBoundingBoxes(std::vector<cv::DMatch> &matches, std::map<int, int> &bbBestMatches, DataFrame &prevFrame, DataFrame &currFrame)
     {
@@ -110,7 +109,7 @@ In this final project, you will implement the missing parts in the schematic. To
       */
     }
   ```
-  * FP.2: Using cropped lidar points and their respective projection onto 2D iamges obtained from camera, TTC is computed. These Lidar points are associated with bounding boxes detected using Yolo based Deeplearning alogorithm. Using the matching bounding boxes and the criteria that vehicle in front is in the ego lane, the appropiate lidar points are sorted based on the x-coord. Inorder to avoid outliers, used the median of the sorted x-coord to compute TTC
+  * FP.2: Using cropped lidar points and their respective projection onto 2D iamges obtained from camera, TTC is computed. These Lidar points are associated with bounding boxes. Using the matching bounding boxes and the criteria that vehicle in front is in the ego lane, the appropiate lidar points are sorted based on the x-coord. Inorder to avoid outliers, used the median of the sorted x-coord to compute TTC.
   
   ```
         void computeTTCLidar(std::vector<LidarPoint> &lidarPointsPrev,
